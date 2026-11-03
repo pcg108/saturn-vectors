@@ -481,7 +481,7 @@ class VectorBackend(implicit p: Parameters) extends CoreModule()(p) with HasVect
       when (vxs.io.vat === vps.io.vat && vxs.io.busy) {
         vps.io.acc_data.ready := vxs.io.acc_ready
         vxs.io.acc_valid := vps.io.acc_data.valid
-        when (vxs.io.iss.fire && vxs.io.iss.bits.tail) {
+        when (vxs.io.iss.fire && vxs.io.iss.bits.tail && vxs.io.iss.bits.acc) {
           vps.io.acc_done := true.B
         }
       }
